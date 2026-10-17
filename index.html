@@ -3,62 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Practice Site</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        header {
-            background: #24292e;
-            color: #fff;
-            padding: 1.5rem;
-            text-align: center;
-        }
-        main {
-            flex: 1;
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        section {
-            padding: 2rem 1rem;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #eaecef;
-            font-size: 0.9rem;
-        }
-    </style>
+    <title>DevTools Research | Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to My Practice Site</h1>
-        <p>Built for testing and future updates for IT3203</p>
-    </header>
+    <!-- Consistent Navigation -->
+    <nav class="main-nav">
+        <div class="nav-brand">DevTools Research</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="devtools-basics.html">The Basics</a></li>
+            <li><a href="devtools-panels.html">The Panels</a></li>
+            <li><a href="key-concepts.html">Key Concepts</a></li>
+            <li><a href="references.html">References</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
 
-    <main>
-        <section>
-            <h2>About This Page</h2>
-            <p>A practice website that I can use for my Intro to Web Development course.</p>
+    <main class="container">
+        <header class="page-header">
+            <h1>An Introduction to Browser Developer Tools</h1>
+            <p class="subtitle">IT 3203: Intro to Web Development | Research by Terra Hall</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Abstract</h2>
+            <p>Browser Developer Tools (DevTools) are built-in software suites integrated directly into modern web browsers. They allow anyone to inspect, test, edit, and debug website code and network activity live in real-time. This research website explores the fundamental components of DevTools, the core panels used for visual and logical debugging, and the importance of performance auditing in modern web development.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Key Terms</h2>
+            <ul>
+                <li><strong>DOM (Document Object Model):</strong> The tree structure representing a webpage's HTML.</li>
+                <li><strong>Client-Server Model:</strong> The architecture where the browser (client) requests data from a server.</li>
+                <li><strong>Breakpoint:</strong> A marker that tells the browser to pause JavaScript execution so you can inspect it.</li>
+                <li><strong>CDP (Chrome DevTools Protocol):</strong> The communication language between DevTools and the browser engine.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Table of Contents</h2>
+            <table class="toc-table">
+                <thead>
+                    <tr>
+                        <th>Page</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="devtools-basics.html">1. The Basics</a></td>
+                        <td>What DevTools are, how to open them, and an interface tour.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="devtools-panels.html">2. The Panels</a></td>
+                        <td>Deep dive into the Elements, Console, and Network panels.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="key-concepts.html">3. Key Concepts</a></td>
+                        <td>Definitions and explanations of core DevTools terminology.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="references.html">4. References</a></td>
+                        <td>Official documentation and resources for further learning.</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 My Practice Site</p>
+        <p>&copy; 2026 Terra Hall. Built for IT 3203.</p>
     </footer>
-
 </body>
 </html>
