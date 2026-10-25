@@ -94,8 +94,8 @@ h1, h2, h3 {
 }
 
 .subtitle {
-    font-style: italic;
-    color: #7f8c8d;
+    font-style: normal;
+    color: #555555;
 }
 
 .content-section {
