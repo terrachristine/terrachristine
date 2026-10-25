@@ -73,6 +73,13 @@ h1, h2, h3 {
     text-decoration: underline;
 }
 
+/* Highlight for the current active page */
+.nav-links a.active {
+    color: #1abc9c; /* Teal color */
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 /* =========================================
    Main Content Layout
    ========================================= */
