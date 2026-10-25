@@ -54,7 +54,7 @@ h1, h2, h3 {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 35px;
     margin: 0;
     padding: 0;
 }
