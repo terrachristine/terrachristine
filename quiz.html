@@ -290,8 +290,12 @@
 
             // Check answers and build results
             // Q1
-            if (q1 === "console") { score++; resultsHTML += "<p>1. <span class='correct-answer'>Correct!</span> (Console)</p>"; } 
-            else { resultsHTML += "<p>1. <span class='incorrect-answer'>Incorrect.</span> The correct answer is Console.</p>"; }
+            if (q1 === "console") { 
+                score++; 
+                resultsHTML += '<p>1. <span class='correct-answer'>Correct!</span> The Console panel is used to see error messages and run JavaScript commands.</p>'; 
+            } else { 
+                resultsHTML += '<p>1. <span class='incorrect-answer'>Incorrect.</span>You answered: <em>" + (q1 || "Nothing") + "</em>. The correct answer is: The <strong>Console</strong> panel is used to see error messages and run JavaScript commands.</p>"; 
+            }
             // Q2
             if (q2 === "network") { score++; resultsHTML += "<p>2. <span class='correct-answer'>Correct!</span> (Network)</p>"; } 
             else { resultsHTML += "<p>2. <span class='incorrect-answer'>Incorrect.</span> The correct answer is Network.</p>"; }
