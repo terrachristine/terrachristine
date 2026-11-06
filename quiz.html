@@ -292,37 +292,56 @@
             // Q1
             if (q1 === "console") { 
                 score++; 
-                resultsHTML += '<p>1. <span class='correct-answer'>Correct!</span> The Console panel is used to see error messages and run JavaScript commands.</p>'; 
+                resultsHTML += "<p>1. <span class='correct-answer'>Correct!</span> The Console panel is used to see error messages and run JavaScript commands.</p>"; 
             } else { 
                 resultsHTML += '<p>1. <span class='incorrect-answer'>Incorrect.</span>You answered: <em>" + (q1 || "Nothing") + "</em>. The correct answer is: The <strong>Console</strong> panel is used to see error messages and run JavaScript commands.</p>"; 
             }
             // Q2
-            if (q2 === "network") { score++; resultsHTML += "<p>2. <span class='correct-answer'>Correct!</span> (Network)</p>"; } 
-            else { resultsHTML += "<p>2. <span class='incorrect-answer'>Incorrect.</span> The correct answer is Network.</p>"; }
+            if (q2 === "network") { 
+                score++; 
+                resultsHTML += "<p>2. <span class='correct-answer'>Correct!</span> (Network)</p>"; 
+            } else { 
+                resultsHTML += "<p>2. <span class='incorrect-answer'>Incorrect.</span> The correct answer is Network.</p>"; }
             // Q3
-            if (q3Correct) { score++; resultsHTML += "<p>3. <span class='correct-answer'>Correct!</span> (A, B, D)</p>"; } 
-            else { resultsHTML += "<p>3. <span class='incorrect-answer'>Incorrect.</span> The correct answers are A, B, D.</p>"; }
+            if (q3Correct) { 
+                score++; 
+                resultsHTML += "<p>3. <span class='correct-answer'>Correct!</span> (A, B, D)</p>"; 
+            } else { resultsHTML += "<p>3. <span class='incorrect-answer'>Incorrect.</span> The correct answers are A, B, D.</p>"; }
             // Q4
-            if (q4 === "A") { score++; resultsHTML += "<p>4. <span class='correct-answer'>Correct!</span> (A)</p>"; } 
-            else { resultsHTML += "<p>4. <span class='incorrect-answer'>Incorrect.</span> The correct answer is A.</p>"; }
+            if (q4 === "A") { 
+                score++; 
+                resultsHTML += "<p>4. <span class='correct-answer'>Correct!</span> (A)</p>"; 
+            } else { resultsHTML += "<p>4. <span class='incorrect-answer'>Incorrect.</span> The correct answer is A.</p>"; }
             // Q5
-            if (q5 === "A") { score++; resultsHTML += "<p>5. <span class='correct-answer'>Correct!</span> (A)</p>"; } 
-            else { resultsHTML += "<p>5. <span class='incorrect-answer'>Incorrect.</span> The correct answer is A.</p>"; }
+            if (q5 === "A") { 
+                score++; 
+                resultsHTML += "<p>5. <span class='correct-answer'>Correct!</span> (A)</p>"; 
+            } else { resultsHTML += "<p>5. <span class='incorrect-answer'>Incorrect.</span> The correct answer is A.</p>"; }
             // Q6
-            if (q6 === "B") { score++; resultsHTML += "<p>6. <span class='correct-answer'>Correct!</span> (B)</p>"; } 
-            else { resultsHTML += "<p>6. <span class='incorrect-answer'>Incorrect.</span> The correct answer is B.</p>"; }
+            if (q6 === "B") { 
+                score++; 
+                resultsHTML += "<p>6. <span class='correct-answer'>Correct!</span> (B)</p>"; 
+            } else { resultsHTML += "<p>6. <span class='incorrect-answer'>Incorrect.</span> The correct answer is B.</p>"; }
             // Q7
-            if (q7 === "B") { score++; resultsHTML += "<p>7. <span class='correct-answer'>Correct!</span> (B)</p>"; } 
-            else { resultsHTML += "<p>7. <span class='incorrect-answer'>Incorrect.</span> The correct answer is B.</p>"; }
+            if (q7 === "B") { 
+                score++; 
+                resultsHTML += "<p>7. <span class='correct-answer'>Correct!</span> (B)</p>"; 
+            } else { resultsHTML += "<p>7. <span class='incorrect-answer'>Incorrect.</span> The correct answer is B.</p>"; }
             // Q8
-            if (q8 === "B") { score++; resultsHTML += "<p>8. <span class='correct-answer'>Correct!</span> (B)</p>"; } 
-            else { resultsHTML += "<p>8. <span class='incorrect-answer'>Incorrect.</span> The correct answer is B.</p>"; }
+            if (q8 === "B") { 
+                score++; 
+                resultsHTML += "<p>8. <span class='correct-answer'>Correct!</span> (B)</p>"; 
+            } else { resultsHTML += "<p>8. <span class='incorrect-answer'>Incorrect.</span> The correct answer is B.</p>"; }
             // Q9
-            if (q9 === "B") { score++; resultsHTML += "<p>9. <span class='correct-answer'>Correct!</span> (B)</p>"; } 
-            else { resultsHTML += "<p>9. <span class='incorrect-answer'>Incorrect.</span> The correct answer is B.</p>"; }
+            if (q9 === "B") { 
+                score++; 
+                resultsHTML += "<p>9. <span class='correct-answer'>Correct!</span> (B)</p>"; 
+            } else { resultsHTML += "<p>9. <span class='incorrect-answer'>Incorrect.</span> The correct answer is B.</p>"; }
             // Q10
-            if (q10 === "B") { score++; resultsHTML += "<p>10. <span class='correct-answer'>Correct!</span> (B)</p>"; } 
-            else { resultsHTML += "<p>10. <span class='incorrect-answer'>Incorrect.</span> The correct answer is B.</p>"; }
+            if (q10 === "B") { 
+                score++; 
+                resultsHTML += "<p>10. <span class='correct-answer'>Correct!</span> (B)</p>"; 
+            } else { resultsHTML += "<p>10. <span class='incorrect-answer'>Incorrect.</span> The correct answer is B.</p>"; }
 
             // Calculate final results
             let percentage = (score / totalQuestions) * 100;
