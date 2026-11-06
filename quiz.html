@@ -275,18 +275,18 @@
             // Get user answers
             const q1 = document.getElementById('q1').value.trim().toLowerCase();
             const q2 = document.getElementById('q2').value.trim().toLowerCase();
-            const q3 = document.querySelector('input[name="q3"]:checked')?.value;
             const q4 = document.querySelector('input[name="q4"]:checked')?.value;
             const q5 = document.querySelector('input[name="q5"]:checked')?.value;
+            const q6 = document.querySelector('input[name="q6"]:checked')?.value;
             const q7 = document.querySelector('input[name="q7"]:checked')?.value;
             const q8 = document.querySelector('input[name="q8"]:checked')?.value;
             const q9 = document.querySelector('input[name="q9"]:checked')?.value;
             const q10 = document.querySelector('input[name="q10"]:checked')?.value;
             
-            // Multi-select logic (Q6)
-            const q6Checked = Array.from(document.querySelectorAll('input[name="q6"]:checked')).map(el => el.value);
-            // Correct answers for Q6 are A, B, D. So length must be 3, and must contain A, B, D.
-            const q6Correct = q6Checked.length === 3 && q6Checked.includes("A") && q6Checked.includes("B") && q6Checked.includes("D");
+            // Multi-select logic (Q3)
+            const q3Checked = Array.from(document.querySelectorAll('input[name="q3"]:checked')).map(el => el.value);
+            // Correct answers for Q3 are A, B, D. So length must be 3, and must contain A, B, D.
+            const q3Correct = q3Checked.length === 3 && q3Checked.includes("A") && q3Checked.includes("B") && q3Checked.includes("D");
 
             // Check answers and build results
             // Q1
