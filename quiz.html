@@ -1,4 +1,7 @@
 <!-- 
+    Terra Hall
+    IT 3203 Intro to Web Development
+    Research Project: Quiz page for website
     Quiz Page for DevTools Research Project
     Created by Terra Hall for IT 3203
 -->
@@ -64,7 +67,7 @@
             background-color: #16a085;
         }
         
-        /* Results Modal */
+        /* Results Modal: Quiz results pop-up box */
         .modal-overlay {
             display: none; /* default: hidden */
             position: fixed;
@@ -88,8 +91,8 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        .pass-text { color: #27ae60; } /* Green */
-        .fail-text { color: #c0392b; } /* Red */
+        .pass-text { color: #27ae60; } /* Pass = Green */
+        .fail-text { color: #c0392b; } /* Fail = Red */
         .score-display {
             font-size: 2rem;
             font-weight: bold;
@@ -111,6 +114,7 @@
         <h1>DevTools</h1>
     </header>
 
+    /*nav bar with quiz added */
     <nav class="main-nav">
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -135,7 +139,8 @@
         </div>
 
         <form id="quiz-form">
-         
+
+            <!-- Fill in the blank questions 1-2 (input text) -->
             <h4>Fill in the Blank</h4>
             <div class="question-block">
                 <div class="question-text">1. The <input type="text" id="q1" placeholder="Type answer here"> panel is used to see error messages and run JavaScript commands.</div>
@@ -144,7 +149,8 @@
             <div class="question-block">
                 <div class="question-text">2. The <input type="text" id="q2" placeholder="Type answer here"> panel shows every file that a webpage downloads, such as images, scripts, and fonts.</div>
             </div>
-            
+
+            <!-- Multi-choice question with 3 possible answers (checkbox) question 3 -->
             <h4>Multi-Choice (select all that apply)</h4>
             <div class="question-block">
                 <div class="question-text">3. Which of the following are ways to open Browser Developer Tools?</div>
@@ -154,6 +160,7 @@
                 <label class="option-label"><input type="checkbox" name="q3" value="D"> D) Using the browser's main menu and going to "More Tools."</label>
             </div>
 
+            <!-- multiple choice questions with one possible answer (radio) questions 4-10 -->
             <h4>Multiple Choice (choose one)</h4>
             <div class="question-block">
                 <div class="question-text">4. Which of the following is the primary purpose of the Elements panel?</div>
@@ -175,7 +182,6 @@
                 <label class="option-label"><input type="radio" name="q6" value="B"> B) Built-in features included in modern web browsers.</label>
                 <label class="option-label"><input type="radio" name="q6" value="C"> C) A paid subscription service for web developers.</label>
             </div>
-
             <h4>Multiple Choice (choose one)</h4>
             <div class="question-block">
                 <div class="question-text">7. What does the Device Mode Toggle (the phone/tablet icon) allow you to do?</div>
@@ -205,11 +211,12 @@
                 <label class="option-label"><input type="radio" name="q10" value="C"> C) The Network panel</label>
             </div>
 
+            <!-- submit button -->
             <button type="button" class="submit-btn" onclick="submitQuiz()" style="display: block; margin: 0 auto;">Submit Quiz</button>
         </form>
     </main>
 
-    <!-- Results Modal -->
+    <!-- Results Modal: pop up box with results (score, time, answers) -->
     <div class="modal-overlay" id="results-modal">
         <div class="modal-content">
             <div class="result-header">
@@ -223,6 +230,7 @@
                 <!--detailed results -->
             </div>
 
+            <!-- reset or retake test button to clear out results */ -->
             <div style="text-align: center; margin-top: 20px;">
                 <button class="retake-btn" onclick="resetQuiz()">Retake Quiz</button>
             </div>
@@ -234,7 +242,7 @@
         <p>This is a class project for <a href="https://ksuweb.github.io/IT3203/" target="_blank">IT 3203: Intro to Web Development</a>.</p>
     </footer>
 
-    <!-- Quiz Logic JavaScript by Terra Hall -->
+    <!-- JavaScript for quiz -->
     <script>
         let timeLeft = 600; // 10 minutes in seconds
         let timerInterval;
@@ -259,7 +267,7 @@
             }, 1000);
         }
 
-        // Start the timer 
+        // Start the timer when user interacts
         document.querySelectorAll('input').forEach(input => {
             input.addEventListener('click', startTimer);
             input.addEventListener('keydown', startTimer);
@@ -284,69 +292,69 @@
             const q9 = document.querySelector('input[name="q9"]:checked')?.value;
             const q10 = document.querySelector('input[name="q10"]:checked')?.value;
             
-            // Multi-select logic (Q3)
+            // check answer for multi-select (Q3)
             const q3Checked = Array.from(document.querySelectorAll('input[name="q3"]:checked')).map(el => el.value);
             // Correct answers for Q3 are A, B, D. So length must be 3, and must contain A, B, D.
             const q3Correct = q3Checked.length === 3 && q3Checked.includes("A") && q3Checked.includes("B") && q3Checked.includes("D");
 
-            // Check answers and build results
-            // Q1
+            // Check answers for fill in the blank and multiple choice
+            // Q1 (fill in the blank)
             if (q1 === "console") { 
                 score++; 
                 resultsHTML += "<p>1. <span class='correct-answer'>Correct!</span> The console panel is used to see error messages and run JavaScript commands.</p>"; 
             } else { 
                 resultsHTML += "<p>1. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q1 || "Nothing") + "</em>. The correct answer is Console. The console panel is used to see error messages and run JavaScript commands.</p>"; 
             }
-            // Q2
+            // Q2 (fill in the blank)
             if (q2 === "network") { 
                 score++; 
                 resultsHTML += "<p>2. <span class='correct-answer'>Correct!</span> The network panel shows every file that a webpage downloads, such as images, scripts, and fonts.)</p>"; 
             } else { 
                 resultsHTML += "<p>2. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q2 || "Nothing") + "</em>. The correct answer is Network. The network panel shows every file that a webpage downloads, such as images, scripts, and fonts.</p>"; 
             }
-            // Q3
+            // Q3 (multiple choice)
             if (q3Correct) { 
                 score++; 
                 resultsHTML += "<p>3. <span class='correct-answer'>Correct!</span> The following are ways to open Browser Developer Tools: Pressing F12 on your keyboard, Right-clicking a webpage and selecting 'Inspect,' and Using the browser's main menu and going to 'More Tools.' (A, B, D)</p>"; 
             } else { resultsHTML += "<p>3. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q3 || "Nothing") + "</em>. The correct answers are A, B, D. The following are ways to open Browser Developer Tools: Pressing F12 on your keyboard, Right-clicking a webpage and selecting 'Inspect,' and Using the browser's main menu and going to 'More Tools.' (A, B, D)</p>";
             }
-            // Q4
+            // Q4 (multiple choice)
             if (q4 === "A") { 
                 score++; 
                 resultsHTML += "<p>4. <span class='correct-answer'>Correct!</span> The primary purpose of the Elements panel is to view and edit the HTML structure and CSS styles of a webpage. (A)</p>"; 
             } else { resultsHTML += "<p>4. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q4 || "Nothing") + "</em>. The correct answer is A. The primary purpose of the Elements panel is to view and edit the HTML structure and CSS styles of a webpage.</p>"; 
             }
-            // Q5
+            // Q5 (multiple choice)
             if (q5 === "A") { 
                 score++; 
                 resultsHTML += "<p>5. <span class='correct-answer'>Correct!</span> The Client-Server Model is the architecture where your browser (the client) requests data from a server. (A)</p>"; 
             } else { resultsHTML += "<p>5. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q5 || "Nothing") + "</em>. The correct answer is A. The Client-Server Model is the architecture where your browser (the client) requests data from a server.</p>"; 
             }
-            // Q6
+            // Q6 (multiple choice)
             if (q6 === "B") { 
                 score++; 
                 resultsHTML += "<p>6. <span class='correct-answer'>Correct!</span> Browser Developer Tools (DevTools) are built-in featurs included in modern web browsers. (B)</p>"; 
             } else { resultsHTML += "<p>6. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q6 || "Nothing") + "</em>. The correct answer is B. Browser Developer Tools (DevTools) are built-in featurs included in modern web browsers.</p>"; 
             }
-            // Q7
+            // Q7 (multiple choice)
             if (q7 === "B") { 
                 score++; 
                 resultsHTML += "<p>7. <span class='correct-answer'>Correct!</span> Device Mode Toggle (the phone/tablet icon) allows you to simulate how a webpage looks on different mobile screen sizes. (B)</p>"; 
             } else { resultsHTML += "<p>7. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q7 || "Nothing") + "</em>. The correct answer is B. Device Mode Toggle (the phone/tablet icon) allows you to simulate how a webpage looks on different mobile screen sizes.</p>"; 
             }
-            // Q8
+            // Q8 (multiple choice)
             if (q8 === "B") { 
                 score++; 
                 resultsHTML += "<p>8. <span class='correct-answer'>Correct!</span> A developer would use the Lighthouse panel to run automated audits that check performance, accessibility, and SEO. (B)</p>"; 
             } else { resultsHTML += "<p>8. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q8 || "Nothing") + "</em>. The correct answer is B. A developer would use the Lighthouse panel to run automated audits that check performance, accessibility, and SEO.</p>"; 
             }
-            // Q9
+            // Q9 (multiple choice)
             if (q9 === "B") { 
                 score++; 
                 resultsHTML += "<p>9. <span class='correct-answer'>Correct!</span> 'DOM' stands for Document Object Model. (B)</p>"; 
             } else { resultsHTML += "<p>9. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q9 || "Nothing") + "</em>. The correct answer is B. 'DOM' stands for Document Object Model.</p>"; 
             }
-            // Q10
+            // Q10 (multiple choice)
             if (q10 === "B") { 
                 score++; 
                 resultsHTML += "<p>10. <span class='correct-answer'>Correct!</span> The tool to use for viewing the HTML structure of a webpage and editing the CSS styles live is the Elements panel. (B)</p>"; 
@@ -371,12 +379,12 @@
             document.getElementById('result-time').innerText = `Time spent: ${timeSpentMins} mins, ${timeSpentSecs} secs`;
             document.getElementById('detailed-results').innerHTML = resultsHTML;
 
-            // Show Modal
+            // Show results modal pop up box
             document.getElementById('results-modal').style.display = 'flex';
         }
 
         function resetQuiz() {
-            // Hide modal
+            // close modal
             document.getElementById('results-modal').style.display = 'none';
             
             // Reset form
