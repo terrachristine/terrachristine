@@ -276,9 +276,11 @@
         function submitQuiz() {
             clearInterval(timerInterval); // Stop timer
             quizStarted = false;
+
+            const points = { q1: 1, q2: 1, q3: 2, q4: 1, q5: 1, q6: 1, q7: 1, q8: 1, q9: 1, q10: 1 };
+            const maxScore = Object.values(points).reduce((a, b) => a + b, 0);
             
             let score = 0;
-            let totalQuestions = 10;
             let resultsHTML = "";
 
             // Get user answers
@@ -292,6 +294,8 @@
             const q9 = document.querySelector('input[name="q9"]:checked')?.value;
             const q10 = document.querySelector('input[name="q10"]:checked')?.value;
             
+            // Defining q3
+            const q3 = Array.from(document.querySelectorAll('input[name="q3"]:checked')).map(el => el.value).join(', ');
             // check answer for multi-select (Q3)
             const q3Checked = Array.from(document.querySelectorAll('input[name="q3"]:checked')).map(el => el.value);
             // Correct answers for Q3 are A, B, D. So length must be 3, and must contain A, B, D.
@@ -300,69 +304,77 @@
             // Check answers for fill in the blank and multiple choice
             // Q1 (fill in the blank)
             if (q1 === "console") { 
-                score++; 
+                score += points.q1; 
                 resultsHTML += "<p>1. <span class='correct-answer'>Correct!</span> The console panel is used to see error messages and run JavaScript commands.</p>"; 
             } else { 
                 resultsHTML += "<p>1. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q1 || "Nothing") + "</em>. The correct answer is Console. The console panel is used to see error messages and run JavaScript commands.</p>"; 
             }
             // Q2 (fill in the blank)
             if (q2 === "network") { 
-                score++; 
-                resultsHTML += "<p>2. <span class='correct-answer'>Correct!</span> The network panel shows every file that a webpage downloads, such as images, scripts, and fonts.)</p>"; 
+                score += points.q2; 
+                resultsHTML += "<p>2. <span class='correct-answer'>Correct!</span> The network panel shows every file that a webpage downloads, such as images, scripts, and fonts.</p>"; 
             } else { 
                 resultsHTML += "<p>2. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q2 || "Nothing") + "</em>. The correct answer is Network. The network panel shows every file that a webpage downloads, such as images, scripts, and fonts.</p>"; 
             }
             // Q3 (multiple choice)
             if (q3Correct) { 
-                score++; 
+                score += points.q3; 
                 resultsHTML += "<p>3. <span class='correct-answer'>Correct!</span> The following are ways to open Browser Developer Tools: Pressing F12 on your keyboard, Right-clicking a webpage and selecting 'Inspect,' and Using the browser's main menu and going to 'More Tools.' (A, B, D)</p>"; 
-            } else { resultsHTML += "<p>3. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q3 || "Nothing") + "</em>. The correct answers are A, B, D. The following are ways to open Browser Developer Tools: Pressing F12 on your keyboard, Right-clicking a webpage and selecting 'Inspect,' and Using the browser's main menu and going to 'More Tools.' (A, B, D)</p>";
+            } else { 
+                resultsHTML += "<p>3. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q3 || "Nothing") + "</em>. The correct answers are A, B, D. The following are ways to open Browser Developer Tools: Pressing F12 on your keyboard, Right-clicking a webpage and selecting 'Inspect,' and Using the browser's main menu and going to 'More Tools.' (A, B, D)</p>";
             }
             // Q4 (multiple choice)
             if (q4 === "A") { 
-                score++; 
+                score += points.q4; 
                 resultsHTML += "<p>4. <span class='correct-answer'>Correct!</span> The primary purpose of the Elements panel is to view and edit the HTML structure and CSS styles of a webpage. (A)</p>"; 
-            } else { resultsHTML += "<p>4. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q4 || "Nothing") + "</em>. The correct answer is A. The primary purpose of the Elements panel is to view and edit the HTML structure and CSS styles of a webpage.</p>"; 
+            } else { 
+                resultsHTML += "<p>4. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q4 || "Nothing") + "</em>. The correct answer is A. The primary purpose of the Elements panel is to view and edit the HTML structure and CSS styles of a webpage.</p>"; 
             }
             // Q5 (multiple choice)
             if (q5 === "A") { 
-                score++; 
+                score += points.q5; 
                 resultsHTML += "<p>5. <span class='correct-answer'>Correct!</span> The Client-Server Model is the architecture where your browser (the client) requests data from a server. (A)</p>"; 
-            } else { resultsHTML += "<p>5. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q5 || "Nothing") + "</em>. The correct answer is A. The Client-Server Model is the architecture where your browser (the client) requests data from a server.</p>"; 
+            } else { 
+                resultsHTML += "<p>5. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q5 || "Nothing") + "</em>. The correct answer is A. The Client-Server Model is the architecture where your browser (the client) requests data from a server.</p>"; 
             }
             // Q6 (multiple choice)
             if (q6 === "B") { 
-                score++; 
-                resultsHTML += "<p>6. <span class='correct-answer'>Correct!</span> Browser Developer Tools (DevTools) are built-in featurs included in modern web browsers. (B)</p>"; 
-            } else { resultsHTML += "<p>6. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q6 || "Nothing") + "</em>. The correct answer is B. Browser Developer Tools (DevTools) are built-in featurs included in modern web browsers.</p>"; 
+                score += points.q6; 
+                resultsHTML += "<p>6. <span class='correct-answer'>Correct!</span> Browser Developer Tools (DevTools) are built-in features included in modern web browsers. (B)</p>"; 
+            } else { 
+                resultsHTML += "<p>6. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q6 || "Nothing") + "</em>. The correct answer is B. Browser Developer Tools (DevTools) are built-in featurs included in modern web browsers.</p>"; 
             }
             // Q7 (multiple choice)
             if (q7 === "B") { 
-                score++; 
+                score += points.q7; 
                 resultsHTML += "<p>7. <span class='correct-answer'>Correct!</span> Device Mode Toggle (the phone/tablet icon) allows you to simulate how a webpage looks on different mobile screen sizes. (B)</p>"; 
-            } else { resultsHTML += "<p>7. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q7 || "Nothing") + "</em>. The correct answer is B. Device Mode Toggle (the phone/tablet icon) allows you to simulate how a webpage looks on different mobile screen sizes.</p>"; 
+            } else { 
+                resultsHTML += "<p>7. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q7 || "Nothing") + "</em>. The correct answer is B. Device Mode Toggle (the phone/tablet icon) allows you to simulate how a webpage looks on different mobile screen sizes.</p>"; 
             }
             // Q8 (multiple choice)
             if (q8 === "B") { 
-                score++; 
+                score += points.q8; 
                 resultsHTML += "<p>8. <span class='correct-answer'>Correct!</span> A developer would use the Lighthouse panel to run automated audits that check performance, accessibility, and SEO. (B)</p>"; 
-            } else { resultsHTML += "<p>8. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q8 || "Nothing") + "</em>. The correct answer is B. A developer would use the Lighthouse panel to run automated audits that check performance, accessibility, and SEO.</p>"; 
+            } else { 
+                resultsHTML += "<p>8. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q8 || "Nothing") + "</em>. The correct answer is B. A developer would use the Lighthouse panel to run automated audits that check performance, accessibility, and SEO.</p>"; 
             }
             // Q9 (multiple choice)
             if (q9 === "B") { 
-                score++; 
+                score += points.q9; 
                 resultsHTML += "<p>9. <span class='correct-answer'>Correct!</span> 'DOM' stands for Document Object Model. (B)</p>"; 
-            } else { resultsHTML += "<p>9. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q9 || "Nothing") + "</em>. The correct answer is B. 'DOM' stands for Document Object Model.</p>"; 
+            } else { 
+                resultsHTML += "<p>9. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q9 || "Nothing") + "</em>. The correct answer is B. 'DOM' stands for Document Object Model.</p>"; 
             }
             // Q10 (multiple choice)
             if (q10 === "B") { 
-                score++; 
+                score += points.q10; 
                 resultsHTML += "<p>10. <span class='correct-answer'>Correct!</span> The tool to use for viewing the HTML structure of a webpage and editing the CSS styles live is the Elements panel. (B)</p>"; 
-            } else { resultsHTML += "<p>10. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q10 || "Nothing") + "</em>. The correct answer is B. The tool to use for viewing the HTML structure of a webpage and editing the CSS styles live is the Elements panel.</p>"; 
+            } else { 
+                resultsHTML += "<p>10. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q10 || "Nothing") + "</em>. The correct answer is B. The tool to use for viewing the HTML structure of a webpage and editing the CSS styles live is the Elements panel.</p>"; 
             }
 
             // Calculate final results
-            let percentage = (score / totalQuestions) * 100;
+            let percentage = (score / maxScore) * 100;
             let statusText = percentage >= 70 ? "PASSED" : "FAILED";
             let statusClass = percentage >= 70 ? "pass-text" : "fail-text";
             
@@ -374,7 +386,7 @@
             // Display Results
             document.getElementById('result-status').innerText = statusText;
             document.getElementById('result-status').className = statusClass;
-            document.getElementById('result-score').innerText = `Score: ${score} / ${totalQuestions} (${percentage}%)`;
+            document.getElementById('result-score').innerText = `Score: ${score} / ${maxScore} (${percentage.toFixed(1)}%)`;
             document.getElementById('result-score').className = `score-display ${statusClass}`;
             document.getElementById('result-time').innerText = `Time spent: ${timeSpentMins} mins, ${timeSpentSecs} secs`;
             document.getElementById('detailed-results').innerHTML = resultsHTML;
