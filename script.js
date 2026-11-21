@@ -1,12 +1,14 @@
 /* =========================================
-   IT 3203 - DevTools Website
-   Author: Terra Hall
-   Description: External JavaScript for mobile nav toggle and quiz logic.
+   Terra Hall
+   IT 3203 Web Development
+   DevTools Website
+   Description: External JavaScript for website.
    ========================================= */
 
-//  PART 1: MOBILE NAVIGATION TOGGLE 
+/* =========================================
+   PART 1: MOBILE NAVIGATION TOGGLE
+   ========================================= */
 (function () {
-    // Wait for DOM to be ready
     document.addEventListener('DOMContentLoaded', function () {
         var menuToggle = document.getElementById('menuToggle');
         var mainNav = document.getElementById('mainNav');
@@ -15,7 +17,6 @@
             menuToggle.addEventListener('click', function () {
                 var isOpen = mainNav.classList.toggle('nav-open');
                 menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                // Swap hamburger icon to X (or vice versa)
                 var icon = menuToggle.querySelector('i');
                 if (icon) {
                     icon.classList.toggle('fa-bars', !isOpen);
@@ -23,7 +24,6 @@
                 }
             });
 
-            // Close menu when any nav link is clicked (mobile UX best practice)
             var navLinks = mainNav.querySelectorAll('a');
             for (var i = 0; i < navLinks.length; i++) {
                 navLinks[i].addEventListener('click', function () {
@@ -42,15 +42,15 @@
     });
 })();
 
-//   PART 2: QUIZ LOGIC 
-   
+/* =========================================
+   PART 2: QUIZ LOGIC
+   ========================================= */
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
         var quizForm = document.getElementById('quiz-form');
-        if (!quizForm) return; // not on quiz page — exit
+        if (!quizForm) return;
 
-        // ---- Timer state ----
-        var timeLeft = 600; // 10 minutes in seconds
+        var timeLeft = 600;
         var timerInterval;
         var quizStarted = false;
         var timerDisplay = document.getElementById('timer');
@@ -58,7 +58,6 @@
         function startTimer() {
             if (quizStarted) return;
             quizStarted = true;
-
             timerInterval = setInterval(function () {
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
@@ -75,20 +74,18 @@
             }, 1000);
         }
 
-        // Start timer on first interaction with any input
         var allInputs = quizForm.querySelectorAll('input');
         for (var i = 0; i < allInputs.length; i++) {
             allInputs[i].addEventListener('click', startTimer);
             allInputs[i].addEventListener('keydown', startTimer);
         }
 
-        // ---- Submit handler ----
         function submitQuiz() {
             clearInterval(timerInterval);
             quizStarted = false;
 
             var points = { q1: 1, q2: 1, q3: 2, q4: 1, q5: 1, q6: 1, q7: 1, q8: 1, q9: 1, q10: 1 };
-            var maxScore = 11; // 1+1+2+1+1+1+1+1+1+1
+            var maxScore = 11;
             var score = 0;
             var resultsHTML = '';
 
@@ -113,28 +110,25 @@
             var q4 = radio('q4'), q5 = radio('q5'), q6 = radio('q6'),
                 q7 = radio('q7'), q8 = radio('q8'), q9 = radio('q9'), q10 = radio('q10');
 
-            // Q1
             if (q1 === 'console') {
                 score += points.q1;
                 resultsHTML += "<p>1. <span class='correct-answer'>Correct!</span> The Console panel is used to see error messages and run JavaScript commands.</p>";
             } else {
                 resultsHTML += "<p>1. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q1 || 'Nothing') + "</em>. The correct answer is <strong>Console</strong>.</p>";
             }
-            // Q2
             if (q2 === 'network') {
                 score += points.q2;
                 resultsHTML += "<p>2. <span class='correct-answer'>Correct!</span> The Network panel shows every file that a webpage downloads.</p>";
             } else {
                 resultsHTML += "<p>2. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q2 || 'Nothing') + "</em>. The correct answer is <strong>Network</strong>.</p>";
             }
-            // Q3
             if (q3Correct) {
                 score += points.q3;
                 resultsHTML += "<p>3. <span class='correct-answer'>Correct!</span> A, B, and D are all valid ways to open DevTools.</p>";
             } else {
                 resultsHTML += "<p>3. <span class='incorrect-answer'>Incorrect.</span> You answered: <em>" + (q3Checked.join(', ') || 'Nothing') + "</em>. The correct answers are <strong>A, B, D</strong>.</p>";
             }
-            // Q4–Q10 — helper table
+
             var mc = [
                 { q: 4, got: q4, correct: 'A', expl: 'The Elements panel is for viewing and editing HTML & CSS.' },
                 { q: 5, got: q5, correct: 'A', expl: 'The Client-Server Model is browser requesting data from a server.' },
@@ -153,7 +147,6 @@
                 }
             });
 
-            // Final calculation
             var percentage = (score / maxScore) * 100;
             var passed = percentage >= 70;
             var statusText = passed ? 'PASSED' : 'FAILED';
@@ -175,7 +168,6 @@
             document.getElementById('results-modal').style.display = 'flex';
         }
 
-        // Reset handler 
         function resetQuiz() {
             document.getElementById('results-modal').style.display = 'none';
             quizForm.reset();
@@ -185,7 +177,6 @@
             if (timerDisplay) timerDisplay.innerText = '10:00';
         }
 
-        // button handlers 
         var submitBtn = quizForm.querySelector('.submit-btn');
         if (submitBtn) {
             submitBtn.addEventListener('click', function (e) {
