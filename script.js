@@ -1,13 +1,9 @@
-/* 
-   Terra Hall
+/* Terra Hall
    IT 3203 Web Development
    DevTools Website
-   Description: External JavaScript for website.
-*/
+   Description: External JavaScript for website. */
 
-/*
-   PART 1: MOBILE NAVIGATION TOGGLE
-*/
+/*  PART 1: MOBILE NAVIGATION TOGGLE */
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
         var menuToggle = document.getElementById('menuToggle');
@@ -42,9 +38,7 @@
     });
 })();
 
-/*
-   PART 2: QUIZ LOGIC
-*/
+/*  PART 2: QUIZ LOGIC */
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
         var quizForm = document.getElementById('quiz-form');
