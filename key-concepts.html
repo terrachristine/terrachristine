@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevTools | Key Concepts</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -12,9 +13,13 @@
     <header class="top-header">
         <h1>DevTools</h1>
     </header>
-
+    
     <!-- Main Navigation Menu -->
-    <nav class="main-nav">
+    <nav class="main-nav" id="mainNav">
+        <!-- Hamburger toggle button: only visible on mobile via CSS -->
+        <button class="menu-toggle-btn" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="devtools-basics.html">The Basics</a></li>
@@ -77,5 +82,8 @@
         <p>&copy; 2026 Terra Hall. Built for IT 3203.</p>
         <p>This is a class project for <a href="https://ksuweb.github.io/IT3203/" target="_blank">IT 3203: Intro to Web Development</a>.</p>
     </footer>
+
+    <!-- Link to external JS file -->
+    <script src="script.js"></script>
 </body>
 </html>
