@@ -297,7 +297,7 @@ input[type="checkbox"] {
 /* MOBILE (≤ 767px) */
 @media (max-width: 767px) {
 
-    / Header & Nav */
+
     .top-header {
         padding: 18px 15px 12px 15px;
     }
@@ -319,7 +319,7 @@ input[type="checkbox"] {
         gap: 0;
         width: 100%;
         margin-top: 10px;
-    
+    }
     .main-nav.nav-open .nav-links {
         display: flex;
     }
