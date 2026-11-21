@@ -1,8 +1,8 @@
-/* =========================================
-   IT 3203 - DevTools Website
-   Author: Terra Hall
-   Description: Main stylesheet.
-   ========================================= */
+/* Terra Ja;;
+   IT 3203 Intro to Web Development
+   DevTools Website
+   Description: Main stylesheet. (CSS)
+*/
 
 /* Element Selectors (1 of 3) */
 body {
@@ -19,9 +19,7 @@ h1, h2, h3 {
     margin-top: 0;
 }
 
-/* =========================================
-   Navigation Menu (Flexbox Layout)
-   ========================================= */
+/* Navigation Menu (Flexbox Layout) */
 /* Top Title Header */
 .top-header {
     background-color: #ffffff;
@@ -80,9 +78,7 @@ h1, h2, h3 {
     text-decoration: underline;
 }
 
-/* =========================================
-   Main Content Layout
-   ========================================= */
+/* Main Content Layout */
 .container {
     max-width: 900px;
     margin: 40px auto; 
@@ -109,9 +105,7 @@ h1, h2, h3 {
     margin-bottom: 40px;
 }
 
-/* =========================================
-   Tables (For Homepage TOC)
-   ========================================= */
+/* Tables (For Homepage TOC) */
 .toc-table {
     width: 100%;
     border-collapse: collapse;
@@ -287,16 +281,13 @@ input[type="checkbox"] {
 
 /* RESPONSIVE DESIGN — MEDIA QUERIES */
 
-/* Tablet & up (≥ 768px) — nothing needs to change vs. desktop
-   for your current layout, but this block is left as a hook
-   in case you add tablet-specific tweaks later */
+/* Tablet & up (≥ 768px) */
 @media (min-width: 768px) {
-    /* Desktop-style nav is already the default */
+    /* Desktop-style nav default */
 }
 
 /* MOBILE (≤ 767px) */
 @media (max-width: 767px) {
-
 
     .top-header {
         padding: 18px 15px 12px 15px;
